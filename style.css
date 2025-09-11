@@ -1,0 +1,141 @@
+
+.min-h-wfa {
+  min-height: -webkit-fill-available;
+}
+.subtab-btn, .btnSubmitToAI, .btnTabHistory {
+  cursor: pointer;
+}
+
+    .historySidebar {
+      min-width: 25%;
+    }
+
+    .inputsRow {
+      display: flex;
+      gap: 1em;
+      vertical-align: middle;
+      align-items: center;
+    }
+    button, select {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      height: 56px;
+    }
+
+    #responseOutput {
+      white-space: pre-wrap;
+      border: none;
+      padding: 0;
+      display: flex;
+      overflow: auto;
+      background-color: #fff;
+      flex-direction: column;
+      max-width: 635px;
+      margin: 0 auto;
+      gap: 0;
+      height: calc(100vh - 210px);
+    }
+
+    #responseOutput > p {
+        margin: 4px 0;
+    }
+
+    #responseOutput table {
+      width: fit-content;
+      font-size: 0.9em;
+      /* width: 100%; */
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    #responseOutput ol, #responseOutput ul, #responseOutput li {
+      margin: 0 0 8px 0;
+      line-height: 30px;
+      padding: 0;
+      display: -webkit-inline-box;
+    }
+
+    #responseOutput pre {
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        white-space: normal;
+        max-height: 170px;
+        overflow: auto;
+    }
+
+    #responseOutput th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    #responseOutput th {
+      background-color: #f2f2f2;
+    }
+
+    #responseOutput tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .floatInput {
+      display: inline-grid;
+      border-radius: 10px;
+      cursor: pointer;
+      max-height: 92px;
+      height: max-content;
+      overflow: auto;
+      padding: 4px;
+      margin: 10px 10px 10px auto ;
+      font-size: 0.9em;
+      line-height: 1.5;
+      color: #333;
+      background-color: #E1FBDF;
+      border: 1px solid #E1FBDF;
+      width: 90%;
+      white-space: normal;
+      border-left: 4px solid #E1FBDF;
+      border-top: 4px solid #E1FBDF;
+      border-bottom: 4px solid #E1FBDF;
+      max-width: 635px;
+      min-height: 100px;
+    }
+    .floatOutput {
+      border-radius: 1rem 1rem 1rem;
+      cursor: default;
+      overflow: visible;
+      padding: 0px 10px;
+      margin: 10px auto;
+      line-height: 1.75;
+      color: #333;
+      background-color: #fff;
+      /* border: 2px solid #ededed; */
+      max-width: 635px;
+      white-space: normal;
+    }
+
+    #about {
+      width: 63px;
+      height: 33px;
+      padding: 8px;
+      font-size: 1.25em;
+      margin: auto 8px auto 0;
+      position: static;
+      align-content: center;
+      align-self: center;
+      text-align: -webkit-center;
+      font-size: 0.9em;
+    }
+
+    #tabList {
+      padding: 0 3px;
+      display: flex;
+      /* gap: 4px; */
+    }
