@@ -6,7 +6,6 @@ export class GeminiPrompt {
     // this.stopButtonID = stopButtonID;
     // this.controller = new AbortController();
     this.onResponse = onResponse || null;
-    this.defaults = { systemPrompt: 'You are a friendly, helpful assistant specialized in strategic planning in public health. You are able to connect dots and formulate ideas that humans are unable to' };
     this.characters = [
       {
         "id": "public_health_manager",
@@ -79,6 +78,8 @@ export class GeminiPrompt {
         "tone": "Strategic, conceptual, emphasizes complexity and ripple effects."
       }
     ];
+    // this.defaults = { systemPrompt: 'You are a friendly, helpful assistant specialized in strategic planning in public health. You are able to connect dots and formulate ideas that humans are unable to' };
+    this.defaults = { systemPrompt: 'You are a Public Health Manager; your style is Pragmatic, action-oriented, focused on implementation; your approach: Highlights resource allocation, workforce capacity, operational challenges, and feasible interventions; your tone: Clear, managerial, with recommendations suitable for health departments.' };
     this.running = false;
   }
 
@@ -96,7 +97,14 @@ export class GeminiPrompt {
       initialPrompts: [ { role: 'system', content: this.defaults } ],   
     };
 
-    this.promptLanguageModel = await LanguageModel.create( options );
+    try{
+      this.promptLanguageModel = await LanguageModel.create( options );
+    }
+    catch(e){
+      console.error("Error loading LanguageModel:", e);
+      if( this.onResponse ) this.onResponse(  "LanguageModel failed: " + e.message );
+      return;
+    }
 
     if( this.onResponse ) this.onResponse(  "LanguageModel initialized.\nThinking..." );
     console.log("LanguageModel initialized.");
