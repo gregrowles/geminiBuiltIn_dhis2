@@ -30,6 +30,13 @@
 
     targetEl.innerHTML = html;
     targetEl.scrollTop = targetEl.scrollHeight;
+
+    // dhis2 iframe context
+    if ( window.parent && window.parent.document && window.parent.document.querySelector('.app-shell-app') ) {
+      const parentFrame = window.parent.document.querySelector('.app-shell-app');
+      parentFrame.scrollTo({ top: parentFrame.scrollHeight, left: 0, behavior: 'smooth' });
+    }
+
   }
 
   function markdownReturn ( chunk ) {
@@ -265,3 +272,4 @@
   window.markdownReturn = markdownReturn;
   window.markdownOutput = markdownOutput;
   window.aboutGemini = aboutGemini;
+
