@@ -134,7 +134,8 @@
   }
   async function runPromptStream ( inpText, callback ) {
 
-    await promptLanguageModel.init();
+    if ( inpObj?.options )  await promptLanguageModel.init( inpObj?.options );
+    else await promptLanguageModel.init();
 
     await promptLanguageModel.promptStream( inpText, markdownOutput, ( streamFinal ) => {
 
@@ -151,7 +152,8 @@
 
     if ( typeof inpObj === 'object' && inpObj?.defaultPrompt ) promptLanguageModel.defaults.systemPrompt = inpObj.defaultPrompt;
 
-    await promptLanguageModel.init();
+    if ( inpObj?.options )  await promptLanguageModel.init( inpObj?.options );
+    else await promptLanguageModel.init();
 
     await promptLanguageModel.promptStream( inpObj.prompt, markdownOutput, ( streamFinal ) => {
 
@@ -272,4 +274,5 @@
   window.markdownReturn = markdownReturn;
   window.markdownOutput = markdownOutput;
   window.aboutGemini = aboutGemini;
+
 
