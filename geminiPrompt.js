@@ -84,18 +84,20 @@ export class GeminiPrompt {
   }
 
   // Initializes the summarizer (must be called once)
-  async init() {
+  async init( opts = {} ) {
 
     if (this.promptLanguageModel) return;
     if( this.onResponse ) this.onResponse(  `creating promptLanguageModel*\n\ndefault context prompt: _${this.defaults.systemPrompt}_` );
 
     const controller = new AbortController();
 
-    const options = {
-      signal: controller.signal,
+    const defaults = {
+      // signal: controller.signal,
       // model: 'gemini-1.5-flash',
       initialPrompts: [ { role: 'system', content: this.defaults } ],   
     };
+
+    const options = { ...defaults, ...opts };
 
     try{
       this.promptLanguageModel = await LanguageModel.create( options );
@@ -186,3 +188,4 @@ export class GeminiPrompt {
   }
 
 }
+
