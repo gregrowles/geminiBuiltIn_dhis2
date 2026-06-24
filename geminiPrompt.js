@@ -80,6 +80,13 @@ export class GeminiPrompt {
     this.onResponse = onResponse || null;
     this.controller = null; // Instantiated per streaming session
     this.running = false;
+    this.AILanguageModelSamplingMode = [
+      "most-predictable", // For strict consistency/factual extraction
+      "predictable",      // For highly focused outputs
+      "balanced",         // The default state for standard prompting
+      "creative",         // For tasks favoring variety over strict facts
+      "most-creative"     // For maximum token diversity and brainstorming
+    ];
 
     // Default to the first character ('public_health_manager')
     const defaultChar = GeminiPrompt.CHARACTERS[0];
@@ -103,7 +110,8 @@ export class GeminiPrompt {
 
     // Clean initial Prompts format: content expects a string, not the defaults object
     const defaults = {
-      initialPrompts: [{ role: 'system', content: this.defaults.systemPrompt }]
+      initialPrompts: [{ role: 'system', content: this.defaults.systemPrompt }],
+      samplingMode: this.AILanguageModelSamplingMode[0]
     };
 
     const options = { ...defaults, ...opts };
